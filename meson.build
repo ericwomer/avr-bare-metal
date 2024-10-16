@@ -26,7 +26,7 @@ requires_reset = meson.get_external_property('requires_reset', false)
 
 source_files = ['src/main.cpp']
 
-bin = executable(name + '.bin', source_files, link_args: '')
+bin = executable(name + '.bin', source_files, link_args: '-lm')
 
 # avr-objcopy -O ihex -R .eeprom $< $@
 objcopy = find_program('avr-objcopy')
@@ -44,7 +44,7 @@ else
   avrdude = find_program('avrdude')
 endif
 run_target(
-  'push',
+  'push', # Or upload
   command: [
     avrdude,
     '-F',
