@@ -7,8 +7,8 @@ project(
     'b_lto=true',
     'cpp_rtti=false',
     'cpp_eh_=none',
-    'c_std=gnu11',
-    'cpp_std=gnu++11',
+    'c_std=c11',
+    'cpp_std=c++11',
     'b_staticpic=false',
   ],
 )
@@ -26,7 +26,7 @@ requires_reset = meson.get_external_property('requires_reset', false)
 
 source_files = ['src/main.cpp']
 
-bin = executable(name + '.bin', source_files, link_args: '-lm')
+bin = executable(name + '.bin', source_files, link_args: '')
 
 # avr-objcopy -O ihex -R .eeprom $< $@
 objcopy = find_program('avr-objcopy')
